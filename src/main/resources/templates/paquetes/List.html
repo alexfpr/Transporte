@@ -1,0 +1,39 @@
+<!-- src/main/resources/templates/paquetes/list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Paquetes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Lista de Paquetes</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Destinatario</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="paquete : ${paquetes}">
+                    <td th:text="${paquete.id}"></td>
+                    <td th:text="${paquete.descripcion}"></td>
+                    <td th:text="${paquete.destinatario}"></td>
+                    <td th:text="${paquete.direccion}"></td>
+                    <td>
+                        <a th:href="@{/paquetes/editar/{id}(id=${paquete.id})}" class="btn btn-warning">Editar</a>
+                        <a th:href="@{/paquetes/eliminar/{id}(id=${paquete.id})}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/paquetes/nuevo" class="btn btn-success">Crear Nuevo Paquete</a>
+        <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+    </div>
+</body>
+</html>
